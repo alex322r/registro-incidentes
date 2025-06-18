@@ -1,32 +1,26 @@
-package luisalejos.reporteincidente;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
+package luisalejos.reporteincidente;
 
-
-import java.awt.CardLayout;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 /**
  *
  * @author Alejo
  */
-public class InicioRegistro extends javax.swing.JFrame {
-   
 
-    public InicioRegistro() {
-        initComponents();
-        setLocationRelativeTo(null);
+public class InicioRegistroPanel extends javax.swing.JPanel {
 
-    }   
     /**
-     * Creates new form UI
+     * Creates new form InicioRegistroPanel
      */
+    public InicioRegistroPanel() {
+        initComponents();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,18 +30,6 @@ public class InicioRegistro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jOptionPane1 = new javax.swing.JOptionPane();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        jFrame1 = new javax.swing.JFrame();
-        jFileChooser1 = new javax.swing.JFileChooser();
-        jFrame2 = new javax.swing.JFrame();
-        jFrame3 = new javax.swing.JFrame();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jProgressBar1 = new javax.swing.JProgressBar();
         contenido = new javax.swing.JPanel();
         txtDNI = new javax.swing.JTextField();
         txtContraseña = new javax.swing.JPasswordField();
@@ -70,60 +52,7 @@ public class InicioRegistro extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
 
-        jMenuItem1.setText("jMenuItem1");
-
-        jMenuItem2.setText("jMenuItem2");
-
-        jMenuItem3.setBackground(new java.awt.Color(0, 153, 0));
-        jMenuItem3.setText("jMenuItem3");
-
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jFrame2Layout = new javax.swing.GroupLayout(jFrame2.getContentPane());
-        jFrame2.getContentPane().setLayout(jFrame2Layout);
-        jFrame2Layout.setHorizontalGroup(
-            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame2Layout.setVerticalGroup(
-            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jFrame3Layout = new javax.swing.GroupLayout(jFrame3.getContentPane());
-        jFrame3.getContentPane().setLayout(jFrame3Layout);
-        jFrame3Layout.setHorizontalGroup(
-            jFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame3Layout.setVerticalGroup(
-            jFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\universe-pictures-fi94jh9y6thxl3ji.jpg")); // NOI18N
-        jLabel13.setText("jLabel9");
-
-        jLabel16.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\universe-pictures-fi94jh9y6thxl3ji.jpg")); // NOI18N
-        jLabel16.setText("jLabel9");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Bienvenido");
-        setBackground(new java.awt.Color(255, 255, 204));
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentHidden(java.awt.event.ComponentEvent evt) {
-                formComponentHidden(evt);
-            }
-        });
+        setPreferredSize(new java.awt.Dimension(532, 452));
 
         contenido.setBackground(new java.awt.Color(0, 34, 64));
         contenido.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
@@ -312,8 +241,8 @@ public class InicioRegistro extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(contenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -322,40 +251,33 @@ public class InicioRegistro extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(contenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-      String DNIvalido="12345";
-      String Contraseñavalida= "clave";
-      String DNI = txtDNI.getText();
-      String Contraseña = new String(txtContraseña.getPassword());
-       
-     if(DNI.equals(DNIvalido)&& Contraseña.equals(Contraseñavalida)){
-        ReporteIncidentePanel p1= new ReporteIncidentePanel();
-        p1.setSize(532, 452);
-        p1.setLocation(0,0);
-        contenido.removeAll();
-        contenido.add(p1);
-        contenido.revalidate();
-        contenido.repaint();
+        String DNIvalido="12345";
+        String Contraseñavalida= "clave";
+        String DNI = txtDNI.getText();
+        String Contraseña = new String(txtContraseña.getPassword());
 
-      } else {
-          JOptionPane.showMessageDialog(this, "DNI o Contraseña incorrectos");
-      
-      }
-            
-// TODO add your handling code here:
+        if(DNI.equals(DNIvalido)&& Contraseña.equals(Contraseñavalida)){
+            ReporteIncidentePanel p1= new ReporteIncidentePanel();
+            p1.setSize(532, 452);
+            p1.setLocation(0,0);
+            contenido.removeAll();
+            contenido.add(p1);
+            contenido.revalidate();
+            contenido.repaint();
+
+        } else {
+            JOptionPane.showMessageDialog(this, "DNI o Contraseña incorrectos");
+
+        }
+
+        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnIniciarActionPerformed
 
-    private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formComponentHidden
-
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -389,21 +311,14 @@ public class InicioRegistro extends javax.swing.JFrame {
     });
         }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciar;
     private javax.swing.JPanel contenido;
     private javax.swing.JButton jButton1;
-    private javax.swing.JFileChooser jFileChooser1;
-    private javax.swing.JFrame jFrame1;
-    private javax.swing.JFrame jFrame2;
-    private javax.swing.JFrame jFrame3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -416,12 +331,6 @@ public class InicioRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JOptionPane jOptionPane1;
-    private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtDNI;
     // End of variables declaration//GEN-END:variables
