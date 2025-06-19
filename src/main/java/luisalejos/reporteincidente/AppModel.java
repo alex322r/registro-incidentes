@@ -1,0 +1,63 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package luisalejos.reporteincidente;
+
+import clases.Incidente;
+import clases.Personal;
+import java.util.List;
+
+/**
+ *
+ * @author alexis
+ */
+
+public class AppModel {
+    
+    
+    private Personal personalLogueado;
+    private List<Incidente> incidentes;
+    
+    
+    
+
+    public Personal getUsuarioLogueado() {
+        return personalLogueado;
+    }
+
+    public void setUsuarioLogueado(Personal usuarioLogueado) {
+        this.personalLogueado = usuarioLogueado;
+    }
+    
+    public List<Incidente> getIncidentes() {
+        return incidentes;
+    }
+    
+    public void setIncidentes(List<Incidente> incidentes) {
+        this.incidentes = incidentes;
+    }
+
+  
+    public boolean autenticar(String user, String pass) {
+         AuthService authService = new AuthService();
+        if (authService.verificarCredenciales(user, pass)) {
+            
+            
+            Personal usuario = new AuthService().obtenerDatosPersonalPorDni(user);
+            
+            if(usuario != null) {
+                this.setUsuarioLogueado(usuario);
+                return true;
+            }
+           
+            
+        }
+        this.personalLogueado = null;
+        return false;
+    }
+
+    public void cerrarSesion() {
+        this.personalLogueado = null;
+    }
+}
