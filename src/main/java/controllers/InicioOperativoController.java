@@ -39,7 +39,16 @@ public class InicioOperativoController {
     }
     
     private void verIncidentes() {
-        appController.mostrarListaIncidentes();
+      
+        if (modelo.recuperarIncidentes()) {
+            
+            appController.mostrarListaIncidentes();
+            
+        } else {
+            // Manejar error (en una app real)
+            System.out.println("error al consultar incidentes");
+        }
+        
     }
     
     

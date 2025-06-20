@@ -146,7 +146,7 @@ public class IncidenteDAO {
     
     public static void main(String[] args) throws SQLException {
         
-        /*
+        
         PersonalOperativo ps = new PersonalOperativo();
         ps.setDniPersonal("73576762");
         
@@ -155,7 +155,7 @@ public class IncidenteDAO {
         
         IncidenteTecnico it = new IncidenteTecnico();
         it.setTitulo("La computadora no enciende");
-        it.setDescripcion("Esta viendo nopor y la computadora de repende dejo de funcionar");
+        it.setDescripcion("Esta viendo videos de gatitos y la computadora de repende dejo de funcionar");
         it.setEstado("abierto");
         it.setReportadoPor(ps);
         it.setPrioridad("baja");
@@ -167,7 +167,7 @@ public class IncidenteDAO {
         
         new IncidenteDAO().crearIncidente(it);
         
-        */
+        
         List<Incidente> incidentes = new IncidenteDAO().recuperarIncidentes();
         for(Incidente i : incidentes) {
             System.out.println(i.toString());

@@ -6,6 +6,7 @@ import vistas.VistaLogin;
 import controllers.LoginController;
 import controllers.InicioOperativoController;
 import controllers.AppController;
+import controllers.ListaIncidentesController;
 import java.awt.CardLayout;
 import java.security.CryptoPrimitive;
 import java.sql.Timestamp;
@@ -32,7 +33,7 @@ public class Main {
        VistaInicioOperativo vistaInicioOperativo = new VistaInicioOperativo();
        VistaListaIncidentes vistaListaIncidentes = new VistaListaIncidentes();
        
-       CardLayout cardLayout = new CardLayout();
+        CardLayout cardLayout = new CardLayout();
         JPanel contenedorVistas = new JPanel(cardLayout);
         contenedorVistas.add(vistaLogin, "login");
         contenedorVistas.add(vistaInicioOperativo, "inicioOperativo");
@@ -43,6 +44,7 @@ public class Main {
         new LoginController(modelo, vistaLogin, appController);
        
         appController.setInicioOperativoController(new InicioOperativoController(modelo, vistaInicioOperativo, appController));
+        appController.setListaIncidentesController(new ListaIncidentesController(modelo, vistaListaIncidentes, appController) );
     
     
         JFrame ventana = new JFrame("Registro de incidentes");

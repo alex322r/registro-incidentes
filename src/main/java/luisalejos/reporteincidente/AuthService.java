@@ -122,7 +122,7 @@ public class AuthService {
     
  
     public static void main(String[] args) {
-        new AuthService().registrarUsuario("73576762", "123", "Alexis", "Rodriguez");
+        new AuthService().registrarUsuario("73576762", "123456", "Alexis", "Rodriguez");
     }
    
 

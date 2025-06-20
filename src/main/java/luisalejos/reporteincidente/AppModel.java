@@ -40,7 +40,7 @@ public class AppModel {
 
   
     public boolean autenticar(String user, String pass) {
-         AuthService authService = new AuthService();
+        AuthService authService = new AuthService();
         if (authService.verificarCredenciales(user, pass)) {
             
             
@@ -56,8 +56,32 @@ public class AppModel {
         this.personalLogueado = null;
         return false;
     }
+    
+    public boolean recuperarIncidentes() {
+        
+        List<Incidente> inc = new IncidenteDAO().recuperarIncidentes();
+        
+        if (!inc.isEmpty()) {
+            this.setIncidentes(inc);
+            return true;
+        }
+       
+        this.incidentes = null;
+        return false;
+    }
+    
+    
 
     public void cerrarSesion() {
         this.personalLogueado = null;
     }
+    
+    public static void main(String[] args) {
+       AppModel am = new AppModel();
+       if (am.recuperarIncidentes()) {
+           System.out.println("hay incidentes");
+           am.getIncidentes().forEach(e-> System.out.println(e.toString()));
+       }
+    }
+    
 }

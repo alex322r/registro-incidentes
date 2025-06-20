@@ -4,6 +4,8 @@
  */
 package vistas;
 
+import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.JFrame;
 import luisalejos.reporteincidente.IncidenteTile;
 
@@ -19,13 +21,14 @@ public class VistaListaIncidentes extends javax.swing.JPanel {
     public VistaListaIncidentes() {
         initComponents();
         jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
-        crearListaIncidentes();
+        
     }
     
-    public void crearListaIncidentes() {
+    public void crearListaIncidentes(List<List<String>> datos ) {
         
-        for(int i = 0; i < 20; i++  ) {
-            jPanel2.add(new IncidenteTile("69", "tecnico", "12-06-2025", "cerrado", "12345678","73576762", "media"));
+
+        for (List<String> dato : datos) {
+            jPanel2.add(new IncidenteTile(dato.get(0), dato.get(1),dato.get(2),dato.get(3),dato.get(4),dato.get(5),dato.get(6)));
         }
         
     }
@@ -49,6 +52,7 @@ public class VistaListaIncidentes extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        botonVolver = new javax.swing.JButton();
 
         jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.LINE_AXIS));
         jScrollPane1.setViewportView(jPanel2);
@@ -102,6 +106,13 @@ public class VistaListaIncidentes extends javax.swing.JPanel {
             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        botonVolver.setText("Volver");
+        botonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -110,19 +121,28 @@ public class VistaListaIncidentes extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botonVolver)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(73, 73, 73)
+                .addContainerGap()
+                .addComponent(botonVolver)
+                .addGap(45, 45, 45)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonVolverActionPerformed
 
     public static void main(String[] args) {
         JFrame ventana = new JFrame();
@@ -132,8 +152,14 @@ public class VistaListaIncidentes extends javax.swing.JPanel {
         ventana.pack();
         ventana.setVisible(true);
     }
+    
+    public void AddVolverListener(ActionListener listener) {
+        botonVolver.addActionListener(listener);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
