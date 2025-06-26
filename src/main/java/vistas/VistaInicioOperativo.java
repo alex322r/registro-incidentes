@@ -30,23 +30,61 @@ public class VistaInicioOperativo extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        VistaInicio = new javax.swing.JPanel();
         etiquetaBienvenida = new javax.swing.JLabel();
         botonVerIncidentes = new javax.swing.JButton();
         BotonReportarIncidente = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         botonLogout = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
-        etiquetaBienvenida.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        etiquetaBienvenida.setText("texto de bienvenida");
+        jLabel21.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
+        jLabel21.setText("jLabel9");
 
-        botonVerIncidentes.setText("jButton1");
+        jLabel24.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
+        jLabel24.setText("jLabel9");
 
-        BotonReportarIncidente.setText("jButton2");
+        jLabel25.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
+        jLabel25.setText("jLabel9");
+
+        setBackground(new java.awt.Color(0, 34, 64));
+
+        VistaInicio.setBackground(new java.awt.Color(0, 34, 64));
+
+        etiquetaBienvenida.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
+        etiquetaBienvenida.setForeground(new java.awt.Color(255, 255, 255));
+        etiquetaBienvenida.setText("Texto de bienvenida");
+
+        botonVerIncidentes.setBackground(new java.awt.Color(255, 255, 204));
+        botonVerIncidentes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonVerIncidentes.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\seguimiento.png")); // NOI18N
+        botonVerIncidentes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 255, 204), 4, true));
+        botonVerIncidentes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonVerIncidentes.setLabel("Ver Incidente");
+        botonVerIncidentes.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+
+        BotonReportarIncidente.setBackground(new java.awt.Color(255, 255, 204));
+        BotonReportarIncidente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        BotonReportarIncidente.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\informes.png")); // NOI18N
+        BotonReportarIncidente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 255, 204), 4, true));
+        BotonReportarIncidente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        BotonReportarIncidente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BotonReportarIncidente.setLabel("Reportar Incidente");
+        BotonReportarIncidente.setMargin(new java.awt.Insets(1, 14, 3, 14));
+        BotonReportarIncidente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        BotonReportarIncidente.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         BotonReportarIncidente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonReportarIncidenteActionPerformed(evt);
@@ -60,60 +98,128 @@ public class VistaInicioOperativo extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Ver Incidentes");
-
-        jLabel3.setText("Reporta Incidente");
-
+        botonLogout.setBackground(new java.awt.Color(0, 0, 204));
+        botonLogout.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonLogout.setForeground(new java.awt.Color(255, 255, 255));
         botonLogout.setText("Salir");
+        botonLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonLogoutActionPerformed(evt);
+            }
+        });
 
-        jLabel4.setText("jLabel4");
+        jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
+        jLabel14.setText("jLabel9");
+
+        jLabel15.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
+        jLabel15.setText("jLabel9");
+
+        jLabel22.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
+        jLabel22.setText("jLabel9");
+
+        jLabel23.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
+        jLabel23.setText("jLabel9");
+
+        jLabel26.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
+        jLabel26.setText("jLabel9");
+
+        jLabel27.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
+        jLabel27.setText("jLabel9");
+
+        jLabel28.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel28.setForeground(new java.awt.Color(102, 255, 255));
+        jLabel28.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
+
+        jLabel29.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel29.setForeground(new java.awt.Color(102, 255, 255));
+        jLabel29.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
+
+        javax.swing.GroupLayout VistaInicioLayout = new javax.swing.GroupLayout(VistaInicio);
+        VistaInicio.setLayout(VistaInicioLayout);
+        VistaInicioLayout.setHorizontalGroup(
+            VistaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VistaInicioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VistaInicioLayout.createSequentialGroup()
+                .addContainerGap(95, Short.MAX_VALUE)
+                .addGroup(VistaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(etiquetaBienvenida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(VistaInicioLayout.createSequentialGroup()
+                        .addComponent(botonVerIncidentes)
+                        .addGroup(VistaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(VistaInicioLayout.createSequentialGroup()
+                                .addGap(330, 330, 330)
+                                .addComponent(botonLogout)
+                                .addGap(77, 77, 77))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VistaInicioLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BotonReportarIncidente, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(82, 82, 82)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(98, 98, 98))
+        );
+        VistaInicioLayout.setVerticalGroup(
+            VistaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(VistaInicioLayout.createSequentialGroup()
+                .addGroup(VistaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(VistaInicioLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(etiquetaBienvenida)
+                        .addGap(57, 57, 57)
+                        .addGroup(VistaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(VistaInicioLayout.createSequentialGroup()
+                                .addGroup(VistaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(BotonReportarIncidente))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                                .addComponent(botonLogout))
+                            .addGroup(VistaInicioLayout.createSequentialGroup()
+                                .addComponent(botonVerIncidentes)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(VistaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VistaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel28, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(VistaInicioLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(VistaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(VistaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(VistaInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonLogout)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                .addGap(196, 196, 196)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(etiquetaBienvenida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
-                            .addComponent(botonVerIncidentes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(BotonReportarIncidente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(0, 204, Short.MAX_VALUE))
+            .addComponent(VistaInicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonLogout)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(etiquetaBienvenida)
-                .addGap(83, 83, 83)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonVerIncidentes, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonReportarIncidente, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(154, Short.MAX_VALUE))
+            .addComponent(VistaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -122,8 +228,18 @@ public class VistaInicioOperativo extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void BotonReportarIncidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReportarIncidenteActionPerformed
-        // TODO add your handling code here:
+       /* ReporteIncidentePanel p3 = new ReporteIncidentePanel();
+                p3.setSize(830, 530);
+        p3.setLocation(0,0);
+        VistaInicio.removeAll();
+        VistaInicio.add(p3);
+        VistaInicio.revalidate();
+        VistaInicio.repaint(); */
     }//GEN-LAST:event_BotonReportarIncidenteActionPerformed
+
+    private void botonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLogoutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonLogoutActionPerformed
 
     public void setSaludo(String nombre) {
         etiquetaBienvenida.setText("¡Bienvenido, " + nombre + "!");
@@ -136,16 +252,28 @@ public class VistaInicioOperativo extends javax.swing.JPanel {
     public void addVerIncidentesListener (ActionListener listener) {
         botonVerIncidentes.addActionListener(listener);
     }
+    public void addReportarIncidenteListener(ActionListener listener){
+        BotonReportarIncidente.addActionListener(listener);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonReportarIncidente;
+    private javax.swing.JPanel VistaInicio;
     private javax.swing.JButton botonLogout;
     private javax.swing.JButton botonVerIncidentes;
     private javax.swing.JLabel etiquetaBienvenida;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     // End of variables declaration//GEN-END:variables
 }

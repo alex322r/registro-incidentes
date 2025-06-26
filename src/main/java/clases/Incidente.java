@@ -113,7 +113,7 @@ public abstract class Incidente {
 
     @Override
     public String toString() {
-        return "Incidente{" + "id=" + id + ", titulo=" + titulo + ", descripcion=" + descripcion + ", fecha=" + fecha.toLocalDateTime() + ", estado=" + estado + ", reportadoPor=" + reportadoPor.getDniPersonal() + ", asignadoA=" + asignadoA + ", prioridad=" + prioridad + ", adjunto=" + adjunto.getRuta()  + '}';
+        return "Incidente{" + "id=" + id + ", titulo=" + titulo + ", descripcion=" + descripcion + ", fecha=" + fecha.toLocalDateTime() + ", estado=" + estado + ", reportadoPor=" + reportadoPor.getDniPersonal() + ", asignadoA="  + ", prioridad=" + prioridad + ", adjunto=" + adjunto.getRuta()  + '}';
     }
     
     

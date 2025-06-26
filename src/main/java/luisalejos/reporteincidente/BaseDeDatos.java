@@ -9,26 +9,13 @@ import java.util.Properties;
  */
 public class BaseDeDatos {
     
-    
-        private static BaseDeDatos instancia;
-        private Connection conexion;
-        private String url;
-        private Properties props;
+     private static Connection conexion;
+        private static String url;
+        private static Properties props;
         
-        private BaseDeDatos() {
-            
-            
-        }
         
-       
-        public static synchronized BaseDeDatos getInstance() {
-            if(instancia == null) {
-                instancia = new BaseDeDatos();
-            }
-            return instancia;
-        }
         
-        public Connection getConexion() throws SQLException {
+        public static Connection getConexion() throws SQLException {
             
             url = "jdbc:postgresql://172.203.146.248/registro_incidentes_db";
             props = new Properties();
@@ -51,5 +38,7 @@ public class BaseDeDatos {
             }
         }
     }
+    
+    
        
 }

@@ -7,27 +7,30 @@ package controllers;
 import controllers.AppController;
 import luisalejos.reporteincidente.AppModel;
 import clases.Personal;
+import vistas.ReporteIncidentePanel;
 import vistas.VistaInicioOperativo;
+import vistas.VistaLogin;
 
-/**
- *
- * @author alexis
- */
+
 public class InicioOperativoController {
     
     private AppModel modelo;
     private VistaInicioOperativo vista;
+    private ReporteIncidentePanel reporte;
     private AppController appController;
 
-    public InicioOperativoController(AppModel modelo, VistaInicioOperativo vista, AppController appController) {
+    public InicioOperativoController(AppModel modelo, VistaInicioOperativo vista,ReporteIncidentePanel reporte, AppController appController) {
         this.modelo = modelo;
         this.vista = vista;
+        this.reporte = reporte;
         this.appController = appController;
         
         this.cargarDatos();
 
         this.vista.addLogoutListener(e -> cerrarSesion());
         this.vista.addVerIncidentesListener(e -> verIncidentes());
+        this.vista.addReportarIncidenteListener(e -> mostrarReporte());
+       
     }
 
     public void cargarDatos() {
@@ -38,24 +41,30 @@ public class InicioOperativoController {
         }
     }
     
+   public void mostrarReporte(){
+        appController.mostrarReporte();
+    }
+    
     private void verIncidentes() {
       
-        if (modelo.recuperarIncidentes()) {
+        
+        
+        if (modelo.recuperarIncidentesByDni(modelo.getUsuarioLogueado().getDniPersonal())) {
             
             appController.mostrarListaIncidentes();
             
         } else {
-            // Manejar error (en una app real)
+           
             System.out.println("error al consultar incidentes");
         }
         
     }
-    
-    
-    
+
+      
     private void cerrarSesion() {
         modelo.cerrarSesion();
         appController.mostrarLogin();
+        
     }
     
     

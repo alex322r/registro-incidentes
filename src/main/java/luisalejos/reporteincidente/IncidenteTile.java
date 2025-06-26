@@ -4,12 +4,17 @@
  */
 package luisalejos.reporteincidente;
 
+import java.awt.Cursor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 /**
  *
  * @author alexis
  */
 public class IncidenteTile extends javax.swing.JPanel {
 
+    private String idIncidente;
     /**
      * Creates new form IncidenteTile
      * @param id
@@ -20,19 +25,31 @@ public class IncidenteTile extends javax.swing.JPanel {
      * @param asignadoA
      * @param prioridad
      */
-    public IncidenteTile(String id, String tipo, String fecha, String estado, String reportadoPor, String asignadoA, String prioridad) {
+    public IncidenteTile(String id, String tipo, String fecha, String estado, String asignadoA, String prioridad) {
         initComponents();
-        jLabel1.setText(id);
-        jLabel2.setText(tipo);
-        jLabel3.setText(fecha);
-        jLabel4.setText(estado);
-        jLabel5.setText(reportadoPor);
-        jLabel6.setText(asignadoA);
-        jLabel7.setText(prioridad);
+        this.idIncidente = id;
+        etiquetaId.setText(id);
+        etiquetaTipo.setText(tipo);
+        etiquetaFecha.setText(fecha);
+        etiquetaEstado.setText(estado);
+        etiquetaAsignadoA.setText(asignadoA);
+        etiquetaPrioridad.setText(prioridad);
         
+        
+       
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                
+                firePropertyChange("incidenteClicked", null, idIncidente);
+                
+            }
+        
+        });
     }
     
     public IncidenteTile() {
+        this.setCursor(new Cursor(2));
         initComponents();
     }
 
@@ -45,69 +62,62 @@ public class IncidenteTile extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        etiquetaId = new javax.swing.JLabel();
+        etiquetaTipo = new javax.swing.JLabel();
+        etiquetaFecha = new javax.swing.JLabel();
+        etiquetaEstado = new javax.swing.JLabel();
+        etiquetaAsignadoA = new javax.swing.JLabel();
+        etiquetaPrioridad = new javax.swing.JLabel();
 
-        jLabel1.setText("123");
+        etiquetaId.setText("123");
 
-        jLabel2.setText("Tecnico");
+        etiquetaTipo.setText("Tecnico");
 
-        jLabel3.setText("16-06-2025");
+        etiquetaFecha.setText("16-06-2025");
 
-        jLabel4.setText("abierto");
+        etiquetaEstado.setText("abierto");
 
-        jLabel5.setText("reportado por");
+        etiquetaAsignadoA.setText("asignado a");
 
-        jLabel6.setText("asignado a");
-
-        jLabel7.setText("baja");
+        etiquetaPrioridad.setText("baja");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(etiquetaId, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(etiquetaTipo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(etiquetaFecha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(etiquetaEstado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
+                .addComponent(etiquetaAsignadoA)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addGap(0, 261, Short.MAX_VALUE))
+                .addComponent(etiquetaPrioridad)
+                .addGap(0, 343, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(etiquetaId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(etiquetaTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(etiquetaFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(etiquetaEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(etiquetaAsignadoA, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(etiquetaPrioridad, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel etiquetaAsignadoA;
+    private javax.swing.JLabel etiquetaEstado;
+    private javax.swing.JLabel etiquetaFecha;
+    private javax.swing.JLabel etiquetaId;
+    private javax.swing.JLabel etiquetaPrioridad;
+    private javax.swing.JLabel etiquetaTipo;
     // End of variables declaration//GEN-END:variables
 }

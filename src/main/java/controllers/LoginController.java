@@ -5,6 +5,7 @@
 package controllers;
 
 import controllers.AppController;
+import javax.swing.JOptionPane;
 import luisalejos.reporteincidente.AppModel;
 import vistas.VistaLogin;
 
@@ -37,10 +38,11 @@ public class LoginController {
         if (modelo.autenticar(user, pass)) {
             
             appController.mostrarInicioOperativo();
+            vista.resetPassword();
             
         } else {
             // Manejar error (en una app real)
-            System.out.println("Credenciales incorrectas");
+            JOptionPane.showMessageDialog(null, "DNI o Contraseña incorrectos");
         }
         
     }

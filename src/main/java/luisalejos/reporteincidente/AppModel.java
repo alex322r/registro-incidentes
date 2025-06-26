@@ -6,6 +6,7 @@ package luisalejos.reporteincidente;
 
 import clases.Incidente;
 import clases.Personal;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -70,18 +71,34 @@ public class AppModel {
         return false;
     }
     
+    public boolean recuperarIncidentesByDni(String dni) {
+        
+        List<Incidente> inc = new IncidenteDAO().recuperarIncidentesPorReportante(dni);
+        
+        if (!inc.isEmpty()) {
+            this.setIncidentes(inc);
+            return true;
+        }
+       
+        this.incidentes = null;
+        return false;
+    }
+    
+    
+    public boolean registrarIncidente(Incidente incidente) throws SQLException {
+        
+        return new IncidenteDAO().crearIncidente(incidente);
+        
+        
+    }
+    
     
 
     public void cerrarSesion() {
         this.personalLogueado = null;
+        
     }
     
-    public static void main(String[] args) {
-       AppModel am = new AppModel();
-       if (am.recuperarIncidentes()) {
-           System.out.println("hay incidentes");
-           am.getIncidentes().forEach(e-> System.out.println(e.toString()));
-       }
-    }
+    
     
 }

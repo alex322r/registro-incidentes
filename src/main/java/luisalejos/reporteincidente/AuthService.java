@@ -20,7 +20,7 @@ public class AuthService {
         String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
         String sql = "INSERT INTO personal (dni_personal, password, nombre, apellido) VALUES (?, ?, ?, ?)";
 
-        try (Connection conn = BaseDeDatos.getInstance().getConexion();
+        try (Connection conn = BaseDeDatos.getConexion();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             
             pstmt.setString(1, dniPersonal);
@@ -48,7 +48,7 @@ public class AuthService {
         
         
         
-        try (Connection conn = BaseDeDatos.getInstance().getConexion();
+        try (Connection conn = BaseDeDatos.getConexion();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, dniPersonal);
@@ -74,12 +74,14 @@ public class AuthService {
     
     public Personal obtenerDatosPersonalPorDni(String dniPersonal) {
        
-       String sql = "SELECT dni_personal, nombre, apellido, nivel_soporte, rol FROM personal WHERE dni_personal = '73576762'";
+       String sql = "SELECT dni_personal, nombre, apellido, nivel_soporte, rol FROM personal WHERE dni_personal = ?";
+       
        Personal personal = null;
        
-       try (Connection conn = BaseDeDatos.getInstance().getConexion();
+       try (Connection conn = BaseDeDatos.getConexion();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
            
+           pstmt.setString(1, dniPersonal);
            
            
            try (ResultSet rs = pstmt.executeQuery()) {

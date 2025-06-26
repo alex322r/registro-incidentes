@@ -6,7 +6,11 @@ import vistas.VistaLogin;
 import controllers.LoginController;
 import controllers.InicioOperativoController;
 import controllers.AppController;
+import controllers.IncidenteInstalacionController;
+import controllers.IncidenteSeguridadController;
+import controllers.IncidenteTecnicoController;
 import controllers.ListaIncidentesController;
+import controllers.ReporteIncidenteController;
 import java.awt.CardLayout;
 import java.security.CryptoPrimitive;
 import java.sql.Timestamp;
@@ -14,16 +18,11 @@ import java.time.Instant;
 import java.util.UUID;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import vistas.ReporteIncidentePanel;
+import vistas.IncidenteInstalacion;
+import vistas.IncidenteSeguridad;
+import vistas.VistaIncidenteTecnico;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author alexis
- */
 public class Main {
     public static void main(String[] args) {
         
@@ -32,21 +31,37 @@ public class Main {
        VistaLogin vistaLogin = new VistaLogin();
        VistaInicioOperativo vistaInicioOperativo = new VistaInicioOperativo();
        VistaListaIncidentes vistaListaIncidentes = new VistaListaIncidentes();
+       ReporteIncidentePanel Reporte = new ReporteIncidentePanel();
+       IncidenteInstalacion Instalacion = new IncidenteInstalacion();
+       IncidenteSeguridad Seguridad = new IncidenteSeguridad ();
+       VistaIncidenteTecnico Tecnico = new VistaIncidenteTecnico();
+       
        
         CardLayout cardLayout = new CardLayout();
         JPanel contenedorVistas = new JPanel(cardLayout);
         contenedorVistas.add(vistaLogin, "login");
         contenedorVistas.add(vistaInicioOperativo, "inicioOperativo");
         contenedorVistas.add(vistaListaIncidentes, "listaIncidentes");
+        contenedorVistas.add(Reporte,"reporte" );
+        
+        
+        contenedorVistas.add(Instalacion, "instalacion");
+        contenedorVistas.add(Seguridad, "seguridad");
+        contenedorVistas.add(Tecnico, "tecnico");
+       
        
         AppController appController = new AppController(contenedorVistas, cardLayout);
        
         new LoginController(modelo, vistaLogin, appController);
        
-        appController.setInicioOperativoController(new InicioOperativoController(modelo, vistaInicioOperativo, appController));
+        appController.setInicioOperativoController(new InicioOperativoController(modelo, vistaInicioOperativo,Reporte, appController));
         appController.setListaIncidentesController(new ListaIncidentesController(modelo, vistaListaIncidentes, appController) );
-    
-    
+        appController.setReporteIncidenteController(new ReporteIncidenteController(modelo,Reporte,Instalacion, Seguridad, Tecnico, appController));
+        appController.setIncidenteInstalacionController(new IncidenteInstalacionController(modelo,Instalacion,appController));
+        appController.setIncidenteSeguridadController(new IncidenteSeguridadController(modelo,Seguridad,appController));
+        appController.setIncidenteTecnicoController(new IncidenteTecnicoController(modelo,Tecnico,appController));
+
+        
         JFrame ventana = new JFrame("Registro de incidentes");
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.add(contenedorVistas);

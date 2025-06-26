@@ -10,7 +10,9 @@ import controllers.AppController;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import luisalejos.reporteincidente.AppModel;
+import utils.GenerarEtiquetas;
 import vistas.VistaListaIncidentes;
 
 
@@ -33,7 +35,7 @@ public class ListaIncidentesController {
         this.cargarDatos();
         
         this.vista.AddVolverListener(e-> verInicioOperativo());
-        
+        this.vista.addFiltrosListener(e->filtrarIncidentes());
         
     }
 
@@ -41,30 +43,47 @@ public class ListaIncidentesController {
         
         List<Incidente> incidentes = modelo.getIncidentes();
         if (incidentes != null) {
-            System.out.println("se encontraron incidentes");
-            List<List <String>> incidentesDatos = new ArrayList<>();
-            for(Incidente i : incidentes) {
-                List <String> in = new ArrayList<>();
-                
-                in.add(i.getId());
-                
-                in.add("tecnico");
-                in.add(i.getFecha().toString());
-                
-                
-                in.add(i.getEstado());
-                in.add(i.getReportadoPor().getDniPersonal());
-                in.add(i.getAsignadoA().getDniPersonal());
-                
-                in.add(i.getPrioridad());
-                       
-                
-                incidentesDatos.add(in);
-            }
-            vista.crearListaIncidentes(incidentesDatos);
+            
+            List<List<String>> incidentesEtiquetas = GenerarEtiquetas
+                    .generarIncidentes(incidentes);
+            vista.crearListaIncidentes(incidentesEtiquetas, e-> System.out.println(e.getNewValue()));
         }
         
     }
+    
+    public void filtrarIncidentes() {
+        List<String> filtros = vista.getFiltros();
+        
+        String estado = filtros.get(0);
+        String prioridad = filtros.get(1);
+
+        List<Incidente> todosLosIncidentes = modelo.getIncidentes();
+        
+        if (todosLosIncidentes == null) return;
+        
+        List<Incidente> incidentesFiltrados = todosLosIncidentes.stream()
+                .filter(incidente -> {
+                   
+                    boolean estadoCoincidencia = estado.equalsIgnoreCase("todos") ||
+                            incidente.getEstado().equalsIgnoreCase(estado);
+                    
+                    boolean  prioridadCoincidencia = prioridad.equalsIgnoreCase("todos") ||
+                            incidente.getPrioridad().equalsIgnoreCase(prioridad);
+                    
+                    return estadoCoincidencia && prioridadCoincidencia;
+                }).collect(Collectors.toList());
+        
+        if (incidentesFiltrados != null) {
+            List <List<String>> etiquetas = GenerarEtiquetas.generarIncidentes(incidentesFiltrados);
+            vista.crearListaIncidentes(etiquetas, e-> System.out.println(e.getNewValue()));
+            System.out.println("Filtrados: " + incidentesFiltrados.size());
+
+        }
+        
+        
+        
+    }
+    
     
     public void verInicioOperativo() {
         appController.mostrarInicioOperativo();
