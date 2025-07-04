@@ -96,14 +96,9 @@ public class ReporteIncidentePanel extends JPanel {
         btnInstalacion = new javax.swing.JButton();
         btnTecnico = new javax.swing.JButton();
         btnSeguridad = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
+        botonVolver = new javax.swing.JButton();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -119,7 +114,6 @@ public class ReporteIncidentePanel extends JPanel {
 
         jLabel22.setBackground(new java.awt.Color(255, 255, 255));
         jLabel22.setForeground(new java.awt.Color(102, 255, 255));
-        jLabel22.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
 
         jMenu2.setText("File");
         jMenuBar1.add(jMenu2);
@@ -225,7 +219,6 @@ public class ReporteIncidentePanel extends JPanel {
 
         btnInstalacion.setBackground(new java.awt.Color(255, 255, 204));
         btnInstalacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnInstalacion.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\instalacion.png")); // NOI18N
         btnInstalacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 255, 204), 4, true));
         btnInstalacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnInstalacion.setLabel("Instalación");
@@ -239,7 +232,6 @@ public class ReporteIncidentePanel extends JPanel {
 
         btnTecnico.setBackground(new java.awt.Color(255, 255, 204));
         btnTecnico.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnTecnico.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\tecnico.png")); // NOI18N
         btnTecnico.setText("Técnico");
         btnTecnico.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 255, 204), 4, true));
         btnTecnico.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -253,7 +245,6 @@ public class ReporteIncidentePanel extends JPanel {
 
         btnSeguridad.setBackground(new java.awt.Color(255, 255, 204));
         btnSeguridad.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnSeguridad.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\seguridad.png")); // NOI18N
         btnSeguridad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 255, 204), 4, true));
         btnSeguridad.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSeguridad.setLabel("Seguridad");
@@ -265,31 +256,13 @@ public class ReporteIncidentePanel extends JPanel {
             }
         });
 
-        jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
-        jLabel14.setText("jLabel9");
-
-        jLabel15.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
-        jLabel15.setText("jLabel9");
-
-        jLabel20.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
-        jLabel20.setText("jLabel9");
-
-        jLabel21.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
-        jLabel21.setText("jLabel9");
-
-        jLabel23.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
-        jLabel23.setText("jLabel9");
-
-        jLabel24.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
-        jLabel24.setText("jLabel9");
-
         jLabel25.setBackground(new java.awt.Color(255, 255, 255));
         jLabel25.setForeground(new java.awt.Color(102, 255, 255));
-        jLabel25.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
 
         jLabel26.setBackground(new java.awt.Color(255, 255, 255));
         jLabel26.setForeground(new java.awt.Color(102, 255, 255));
-        jLabel26.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alejo\\Downloads\\significado-color-turquesa-1024x341.jpg")); // NOI18N
+
+        botonVolver.setText("Volver");
 
         javax.swing.GroupLayout ReporteLayout = new javax.swing.GroupLayout(Reporte);
         Reporte.setLayout(ReporteLayout);
@@ -298,67 +271,47 @@ public class ReporteIncidentePanel extends JPanel {
             .addGroup(ReporteLayout.createSequentialGroup()
                 .addGroup(ReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(ReporteLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addGroup(ReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(btnSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(86, 86, 86)
+                        .addComponent(btnSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnInstalacion, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(66, 66, 66)
                         .addComponent(btnTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ReporteLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(84, 84, 84)
                         .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 623, Short.MAX_VALUE)
                         .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(83, 83, 83))
+            .addGroup(ReporteLayout.createSequentialGroup()
+                .addGroup(ReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ReporteLayout.createSequentialGroup()
+                        .addGap(308, 308, 308)
+                        .addComponent(jLabel1))
+                    .addGroup(ReporteLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(botonVolver)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ReporteLayout.setVerticalGroup(
             ReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReporteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(botonVolver)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel1)
+                .addGap(55, 55, 55)
                 .addGroup(ReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(ReporteLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(ReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnSeguridad, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                            .addComponent(btnInstalacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
+                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ReporteLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ReporteLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel1)
-                        .addGap(59, 59, 59)
-                        .addGroup(ReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(ReporteLayout.createSequentialGroup()
-                                .addGroup(ReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnSeguridad, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                                    .addComponent(btnInstalacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(104, 104, 104)
-                                .addGroup(ReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReporteLayout.createSequentialGroup()
-                                        .addGap(0, 45, Short.MAX_VALUE)
-                                        .addGroup(ReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(ReporteLayout.createSequentialGroup()
-                                .addComponent(btnTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(ReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addComponent(btnTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -416,8 +369,14 @@ public class ReporteIncidentePanel extends JPanel {
     public void addbtnTecnico(ActionListener listener){
         btnTecnico.addActionListener(listener);
     }
+    
+    public void addVolverListener(ActionListener listener) {
+        botonVolver.addActionListener(listener);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Reporte;
+    private javax.swing.JButton botonVolver;
     private javax.swing.JButton btnInstalacion;
     private javax.swing.JButton btnSeguridad;
     private javax.swing.JButton btnTecnico;
@@ -426,14 +385,8 @@ public class ReporteIncidentePanel extends JPanel {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JMenu jMenu1;

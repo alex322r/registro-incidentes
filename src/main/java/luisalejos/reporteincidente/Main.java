@@ -6,21 +6,19 @@ import vistas.VistaLogin;
 import controllers.LoginController;
 import controllers.InicioOperativoController;
 import controllers.AppController;
+import controllers.DetalleIncidenteController;
 import controllers.IncidenteInstalacionController;
 import controllers.IncidenteSeguridadController;
 import controllers.IncidenteTecnicoController;
 import controllers.ListaIncidentesController;
 import controllers.ReporteIncidenteController;
 import java.awt.CardLayout;
-import java.security.CryptoPrimitive;
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.util.UUID;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import vistas.ReporteIncidentePanel;
 import vistas.IncidenteInstalacion;
 import vistas.IncidenteSeguridad;
+import vistas.VistaDetalleIncidente;
 import vistas.VistaIncidenteTecnico;
 
 public class Main {
@@ -35,7 +33,7 @@ public class Main {
        IncidenteInstalacion Instalacion = new IncidenteInstalacion();
        IncidenteSeguridad Seguridad = new IncidenteSeguridad ();
        VistaIncidenteTecnico Tecnico = new VistaIncidenteTecnico();
-       
+        VistaDetalleIncidente vistaDetalleIncidente = new VistaDetalleIncidente();
        
         CardLayout cardLayout = new CardLayout();
         JPanel contenedorVistas = new JPanel(cardLayout);
@@ -43,6 +41,7 @@ public class Main {
         contenedorVistas.add(vistaInicioOperativo, "inicioOperativo");
         contenedorVistas.add(vistaListaIncidentes, "listaIncidentes");
         contenedorVistas.add(Reporte,"reporte" );
+        contenedorVistas.add(vistaDetalleIncidente, "detalleIncidente");
         
         
         contenedorVistas.add(Instalacion, "instalacion");
@@ -56,11 +55,14 @@ public class Main {
        
         appController.setInicioOperativoController(new InicioOperativoController(modelo, vistaInicioOperativo,Reporte, appController));
         appController.setListaIncidentesController(new ListaIncidentesController(modelo, vistaListaIncidentes, appController) );
-        appController.setReporteIncidenteController(new ReporteIncidenteController(modelo,Reporte,Instalacion, Seguridad, Tecnico, appController));
+        appController.setReporteIncidenteController(new ReporteIncidenteController(modelo,Reporte, appController));
         appController.setIncidenteInstalacionController(new IncidenteInstalacionController(modelo,Instalacion,appController));
         appController.setIncidenteSeguridadController(new IncidenteSeguridadController(modelo,Seguridad,appController));
         appController.setIncidenteTecnicoController(new IncidenteTecnicoController(modelo,Tecnico,appController));
 
+        appController.setDetalleIncidenteController(new DetalleIncidenteController(modelo, vistaDetalleIncidente, appController));
+        
+        
         
         JFrame ventana = new JFrame("Registro de incidentes");
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

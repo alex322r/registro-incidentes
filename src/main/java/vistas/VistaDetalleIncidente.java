@@ -4,6 +4,9 @@
  */
 package vistas;
 
+import clases.IncidenteTecnico;
+import luisalejos.reporteincidente.IncidenteTecnicoContainer;
+
 /**
  *
  * @author alexis
@@ -42,7 +45,8 @@ public class VistaDetalleIncidente extends javax.swing.JPanel {
         etiquetaFecha = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         etiquetaAsignadoA = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        etiquetaCorreo = new javax.swing.JLabel();
+        contedorTipoIncidente = new javax.swing.JPanel();
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 
@@ -56,9 +60,12 @@ public class VistaDetalleIncidente extends javax.swing.JPanel {
 
         jLabel5.setText("Descripcion: ");
 
+        textoDescripcion.setEditable(false);
         textoDescripcion.setColumns(20);
+        textoDescripcion.setLineWrap(true);
         textoDescripcion.setRows(5);
-        textoDescripcion.setEnabled(false);
+        textoDescripcion.setWrapStyleWord(true);
+        textoDescripcion.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane1.setViewportView(textoDescripcion);
 
         jLabel6.setText("Estado: ");
@@ -76,8 +83,10 @@ public class VistaDetalleIncidente extends javax.swing.JPanel {
         jLabel12.setText("Asignado a: ");
 
         etiquetaAsignadoA.setBackground(new java.awt.Color(255, 255, 255));
-        etiquetaAsignadoA.setText("Alexis Rodriguez");
+        etiquetaAsignadoA.setText("Sin asignar");
         etiquetaAsignadoA.setOpaque(true);
+
+        etiquetaCorreo.setText("soporte@lol.com");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -110,7 +119,8 @@ public class VistaDetalleIncidente extends javax.swing.JPanel {
                                     .addComponent(etiquetaFecha)
                                     .addComponent(etiquetaPrioridad)
                                     .addComponent(etiquetaEstado)))
-                            .addComponent(jLabel12))
+                            .addComponent(jLabel12)
+                            .addComponent(etiquetaCorreo))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -141,15 +151,17 @@ public class VistaDetalleIncidente extends javax.swing.JPanel {
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(etiquetaAsignadoA)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(etiquetaCorreo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
 
-        jPanel2.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel2.setLayout(new java.awt.BorderLayout());
+        contedorTipoIncidente.setBackground(new java.awt.Color(153, 255, 204));
+        contedorTipoIncidente.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -159,7 +171,7 @@ public class VistaDetalleIncidente extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
+                .addComponent(contedorTipoIncidente, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -168,7 +180,7 @@ public class VistaDetalleIncidente extends javax.swing.JPanel {
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(contedorTipoIncidente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -203,11 +215,24 @@ public class VistaDetalleIncidente extends javax.swing.JPanel {
         this.textoDescripcion.setText(descripcion);
     }
     
+    public void setEtiquetaCorreo(String correo) {
+        this.etiquetaCorreo.setText(correo);
+    }
+    
+    public void setContenedorTipoTecnico() {
+        
+        IncidenteTecnicoContainer itc = new IncidenteTecnicoContainer();
+        this.contedorTipoIncidente.add(itc);
+            
+    }
+    
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel contedorTipoIncidente;
     private javax.swing.JLabel etiquetaAsignadoA;
+    private javax.swing.JLabel etiquetaCorreo;
     private javax.swing.JLabel etiquetaEstado;
     private javax.swing.JLabel etiquetaFecha;
     private javax.swing.JLabel etiquetaId;
@@ -221,7 +246,6 @@ public class VistaDetalleIncidente extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea textoDescripcion;
     // End of variables declaration//GEN-END:variables

@@ -13,6 +13,7 @@ import clases.IncidenteSeguridad;
 import clases.Personal;
 import clases.PersonalOperativo;
 import clases.PersonalSeguridad;
+import enums.Prioridad;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,6 +25,67 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IncidenteDAO {
+    
+    
+    public Incidente recuperarIncidenteById(int id) throws SQLException, Exception {
+        
+        
+        String sql = "SELECT id, tipo, titulo, descripcion, fecha, estado, "
+                + "reportado_por_dni, asignado_a_dni, prioridad, adjunto_id FROM"
+                + " incidente WHERE id = ?";
+        
+        try(Connection conn = BaseDeDatos.getConexion();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+           
+            pstmt.setInt(1, id);
+            
+            try(ResultSet rs = pstmt.executeQuery()) {
+                
+                if(rs.next()) {
+                    Incidente incidente;
+                    if ("tecnico".equals(rs.getString("tipo"))) {
+                        incidente = new IncidenteTecnico();
+                    
+                    } else {
+                        throw new Exception("error tipo incidente");
+                    }
+                    incidente.setId(rs.getString("id"));
+                    incidente.setTitulo(rs.getString("titulo"));
+                    incidente.setDescripcion(rs.getString("descripcion"));
+                    incidente.setEstado(rs.getString("estado"));
+                    String prioridad = rs.getString("prioridad");
+                    Prioridad pri = Prioridad.valueOf(prioridad);
+                    incidente.setPrioridad(pri);
+                    incidente.setFecha(rs.getTimestamp("fecha"));
+               
+                    String psId = rs.getString("asignado_a_dni");
+                    String poId = rs.getString("reportado_por_dni");
+                    
+                    PersonalDAO pd = new PersonalDAO();
+                    
+                    Personal ps = pd.obtenerPorId(psId);
+                    Personal po = pd.obtenerPorId(poId);
+                    
+                    incidente.setAsignadoA((PersonalSeguridad) ps);
+                    incidente.setReportadoPor((PersonalOperativo) po);
+                    
+                    int idAdjunto = rs.getInt("adjunto_id");
+                    
+                    incidente.setAdjunto(new AdjuntoDAO().obtenerPorId(idAdjunto));
+                    
+                    
+                    
+                    return incidente;
+                    
+                } else {
+                    return null;
+                }
+                
+            }
+                    
+        }
+    }
+    
 
     
     public boolean crearIncidente(Incidente incidente) throws SQLException {
@@ -53,8 +115,8 @@ public class IncidenteDAO {
             }
 
             // --- PASO 2: Insertar el Incidente base y obtener su ID generado ---
-            String sqlIncidente = "INSERT INTO incidente (tipo, titulo, descripcion, estado, reportado_por_dni, prioridad, adjunto_id) "
-                                + "VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id";
+            String sqlIncidente = "INSERT INTO incidente (tipo, titulo, descripcion, fecha,estado, reportado_por_dni, prioridad, adjunto_id) "
+                                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING id";
             int nuevoIncidenteId;
 
             try (PreparedStatement pstmtIncidente = conn.prepareStatement(sqlIncidente)) {
@@ -68,16 +130,19 @@ public class IncidenteDAO {
 
                 pstmtIncidente.setString(2, incidente.getTitulo());
                 pstmtIncidente.setString(3, incidente.getDescripcion());
-                pstmtIncidente.setString(4, incidente.getEstado());
-                pstmtIncidente.setString(5, incidente.getReportadoPor().getDniPersonal());
-                pstmtIncidente.setString(6, incidente.getPrioridad());
+                pstmtIncidente.setTimestamp(4, incidente.getFecha());
+                pstmtIncidente.setString(5, incidente.getEstado());
+                pstmtIncidente.setString(6, incidente.getReportadoPor().getDniPersonal());
+                pstmtIncidente.setString(7, incidente.getPrioridad().name());
                 
                 // Manejar el caso de que no haya adjunto (ID nulo)
+               
                 if (nuevoAdjuntoId != null) {
-                    pstmtIncidente.setInt(7, nuevoAdjuntoId);
+                    pstmtIncidente.setInt(8, nuevoAdjuntoId);
                 } else {
-                    pstmtIncidente.setNull(7, Types.INTEGER);
+                    pstmtIncidente.setNull(8, Types.INTEGER);
                 }
+
 
                 ResultSet rs = pstmtIncidente.executeQuery();
                 if (rs.next()) {
@@ -178,7 +243,9 @@ public class IncidenteDAO {
                 incidente.setReportadoPor(po);
                 ps.setDniPersonal(rs.getString("asignado_a_dni"));
                 incidente.setAsignadoA(ps);
-                incidente.setPrioridad(rs.getString("prioridad"));
+                String prioridad = rs.getString("prioridad");
+                Prioridad pri = Prioridad.valueOf(prioridad);
+                incidente.setPrioridad(pri);
                 ad.setRuta("./imagenes/001.jpg");
                 
                 incidente.setAdjunto(ad);
@@ -245,7 +312,9 @@ public class IncidenteDAO {
                 incidente.setReportadoPor(po);
                 ps.setDniPersonal(rs.getString("asignado_a_dni"));
                 incidente.setAsignadoA(ps);
-                incidente.setPrioridad(rs.getString("prioridad"));
+                String prioridad = rs.getString("prioridad");
+                Prioridad pri = Prioridad.valueOf(prioridad);
+                incidente.setPrioridad(pri);
                 ad.setRuta("./imagenes/001.jpg");
                 
                 incidente.setAdjunto(ad);
@@ -320,8 +389,10 @@ public class IncidenteDAO {
                         po.setDniPersonal(rs.getString("reportado_por_dni"));
                         incidente.setReportadoPor(po);
                  
+                        String prioridad = rs.getString("prioridad");
+                        Prioridad pri = Prioridad.valueOf(prioridad);
                         
-                        incidente.setPrioridad(rs.getString("prioridad"));
+                        incidente.setPrioridad(pri);
                         
                      /*
                         String adjuntoId = rs.getString("adjunto_id");
@@ -348,9 +419,9 @@ public class IncidenteDAO {
     
     
     
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, Exception {
         
-        
+        /*
         PersonalOperativo ps = new PersonalOperativo();
         ps.setDniPersonal("71829423");
         
@@ -377,5 +448,8 @@ public class IncidenteDAO {
         for(Incidente i : incidentes) {
             System.out.println(i.toString());
         }
+        
+        */
+//        System.out.println(new IncidenteDAO().recuperarIncidenteById(3).getAsignadoA().getNombre());
     }
 }

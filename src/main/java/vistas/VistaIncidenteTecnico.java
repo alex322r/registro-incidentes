@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
+import utils.ValidadorFecha;
 
 /**
  *
@@ -16,12 +19,28 @@ import javax.swing.JOptionPane;
  */
 public class VistaIncidenteTecnico extends javax.swing.JPanel {
 
+    private List errores;
+    
     /**
      * Creates new form IncidenteTecnico
      */
     public VistaIncidenteTecnico() {
         initComponents();
-        this.addBotonEnviarListener(e->{});
+       errores = new ArrayList<>();
+       SpinnerDateModel model = new SpinnerDateModel();
+       spinnerHora.setModel(model);
+
+        SpinnerDateModel fechaModel = new SpinnerDateModel();
+       
+        spinnerFecha.setModel(fechaModel);
+        
+// Mostrar solo horas y minutos
+        JSpinner.DateEditor editor = new JSpinner.DateEditor(spinnerHora, "HH:mm a");
+        spinnerHora.setEditor(editor);
+        
+        JSpinner.DateEditor editorFecha = new JSpinner.DateEditor(spinnerFecha, "dd/MM/yyyy");
+        spinnerFecha.setEditor(editorFecha);
+
     }
 
     /**
@@ -59,8 +78,8 @@ public class VistaIncidenteTecnico extends javax.swing.JPanel {
         btnRegresar = new javax.swing.JButton();
         Hora = new javax.swing.JLabel();
         Fecha = new javax.swing.JLabel();
-        txtHora = new javax.swing.JTextField();
-        txtFecha = new javax.swing.JTextField();
+        spinnerHora = new javax.swing.JSpinner();
+        spinnerFecha = new javax.swing.JSpinner();
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -178,10 +197,6 @@ public class VistaIncidenteTecnico extends javax.swing.JPanel {
         Fecha.setForeground(new java.awt.Color(51, 255, 204));
         Fecha.setText("Fecha:");
 
-        txtHora.setBackground(new java.awt.Color(204, 255, 255));
-
-        txtFecha.setBackground(new java.awt.Color(204, 255, 255));
-
         javax.swing.GroupLayout TecnicoLayout = new javax.swing.GroupLayout(Tecnico);
         Tecnico.setLayout(TecnicoLayout);
         TecnicoLayout.setHorizontalGroup(
@@ -212,13 +227,13 @@ public class VistaIncidenteTecnico extends javax.swing.JPanel {
                                     .addComponent(SelectorIncidente, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(TecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Fecha)
-                            .addGroup(TecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtHora)
-                                .addComponent(txtFecha)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+                            .addGroup(TecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(Descripción, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(Hora))
+                            .addComponent(Hora)
+                            .addComponent(Fecha)
+                            .addComponent(spinnerHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spinnerFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32))
                     .addGroup(TecnicoLayout.createSequentialGroup()
                         .addGap(49, 49, 49)
@@ -229,7 +244,7 @@ public class VistaIncidenteTecnico extends javax.swing.JPanel {
             .addGroup(TecnicoLayout.createSequentialGroup()
                 .addGap(344, 344, 344)
                 .addComponent(btnGuardaryenviar)
-                .addGap(0, 364, Short.MAX_VALUE))
+                .addGap(0, 356, Short.MAX_VALUE))
         );
         TecnicoLayout.setVerticalGroup(
             TecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,7 +260,7 @@ public class VistaIncidenteTecnico extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(TecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDispositivoAfectado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spinnerHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(TecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Marca)
@@ -253,7 +268,7 @@ public class VistaIncidenteTecnico extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(TecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spinnerFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(TecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Modelo)
@@ -273,7 +288,7 @@ public class VistaIncidenteTecnico extends javax.swing.JPanel {
                     .addComponent(jScrollPane1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(btnGuardaryenviar)
                 .addGap(18, 18, 18)
                 .addGroup(TecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -326,21 +341,38 @@ public class VistaIncidenteTecnico extends javax.swing.JPanel {
         Tecnico.repaint(); */  
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    public boolean verificarCampos() {
-        if (this.txtDescripcion.getText().isBlank() || this.txtDispositivoAfectado.
-                getText().isBlank() || this.txtFecha.getText().isBlank() ||
-                this.txtHora.getText().isBlank() || this.txtMarca.getText().isBlank() ||
-                this.txtModelo.getText().isBlank() || this.txtNumeroDeSerie.getText().isBlank()) {
-            return false;
-        } else {
-            
-            return true;
-        }
+    public List<String> verificarCampos() {
+    
+        List<String> errores = new ArrayList<>();
+
+    if (txtDescripcion.getText().isBlank()) {
+        errores.add("La descripción no puede estar vacía.");
+    }
+    if (txtDispositivoAfectado.getText().isBlank()) {
+        errores.add("El dispositivo afectado no puede estar vacío.");
+    }
+    
+   
+    if (txtMarca.getText().isBlank()) {
+        errores.add("La marca no puede estar vacía.");
+    }
+    if (txtModelo.getText().isBlank()) {
+        errores.add("El modelo no puede estar vacío.");
+    }
+    if (txtNumeroDeSerie.getText().isBlank()) {
+        errores.add("El número de serie no puede estar vacío.");
+    }
+
+    this.errores = errores;
+    
+    return errores;
+        
+        
             
     }
     
-    public HashMap<String, String> getCamposIncidenteTecnico() {
-        HashMap<String, String> campos = new HashMap<>();
+    public HashMap<String, Object> getCamposIncidenteTecnico() {
+        HashMap<String, Object> campos = new HashMap<>();
         
         campos.put("titulo", this.SelectorIncidente.getSelectedItem().toString());
         campos.put("descripcion", this.txtDescripcion.getText());
@@ -348,16 +380,28 @@ public class VistaIncidenteTecnico extends javax.swing.JPanel {
         campos.put("marca", this.txtMarca.getText());
         campos.put("modelo", this.txtModelo.getText());
         campos.put("serie", this.txtNumeroDeSerie.getText());
+        campos.put("fecha", this.spinnerFecha.getValue());
+        campos.put("hora", this.spinnerHora.getValue());
         
         
         return campos;
     }
     
     
-     public void mostrarError(String mensaje) {
+     public void mostrarError() {
+        String errs = String.join("\n", this.errores);
         JOptionPane.showMessageDialog(
             this,                
-            mensaje,              
+             errs,             
+            "Error al Enviar",    
+            JOptionPane.ERROR_MESSAGE 
+        );
+    }
+     
+    public void mostrarErrorBaseDeDatos() {
+        JOptionPane.showMessageDialog(
+            this,                
+             "error de conexion",             
             "Error al Enviar",    
             JOptionPane.ERROR_MESSAGE 
         );
@@ -410,10 +454,10 @@ public class VistaIncidenteTecnico extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JSpinner spinnerFecha;
+    private javax.swing.JSpinner spinnerHora;
     private javax.swing.JTextArea txtDescripcion;
     private javax.swing.JTextField txtDispositivoAfectado;
-    private javax.swing.JTextField txtFecha;
-    private javax.swing.JTextField txtHora;
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtNumeroDeSerie;

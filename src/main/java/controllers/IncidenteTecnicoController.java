@@ -10,14 +10,16 @@ import vistas.VistaInicioOperativo;
 import clases.IncidenteTecnico;
 import clases.Personal;
 import clases.PersonalOperativo;
+import enums.Prioridad;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 public class IncidenteTecnicoController {
     private AppModel modelo;
     private VistaIncidenteTecnico vista;
-    private ReporteIncidentePanel reporte; 
-    private VistaInicioOperativo inicio;
     private AppController appController;
 
     public IncidenteTecnicoController(AppModel modelo, VistaIncidenteTecnico vista,  AppController appController) {
@@ -31,7 +33,7 @@ public class IncidenteTecnicoController {
     } 
     
     public void enviarIncidente() {
-        if(this.vista.verificarCampos()) {
+        if(this.vista.verificarCampos().isEmpty()) {
             
             IncidenteTecnico it = new IncidenteTecnico();
             
@@ -51,8 +53,36 @@ public class IncidenteTecnicoController {
             it.setTitulo(datos.get("titulo").toString());
             it.setDescripcion(datos.get("descripcion").toString());
             it.setEstado("abierto");
-            it.setPrioridad("baja");
+            it.setPrioridad(Prioridad.BAJA);
             it.setDispositivoAfectado(datos.get("dispositivo").toString());
+            
+            Date fecha = (Date) datos.get("fecha");
+            
+            
+          
+            Date hora = (Date) datos.get("hora");
+
+            // Usar Calendar para combinar fecha + hora
+            Calendar calFecha = Calendar.getInstance();
+            calFecha.setTime(fecha);
+
+            Calendar calHora = Calendar.getInstance();
+            calHora.setTime(hora);
+
+            // Establecer hora en la fecha
+            calFecha.set(Calendar.HOUR_OF_DAY, calHora.get(Calendar.HOUR_OF_DAY));
+            calFecha.set(Calendar.MINUTE, calHora.get(Calendar.MINUTE));
+            calFecha.set(Calendar.SECOND, 0);
+            calFecha.set(Calendar.MILLISECOND, 0);
+
+            // Convertir a Timestamp
+            Timestamp timestamp = new Timestamp(calFecha.getTimeInMillis());
+            
+            
+            it.setFecha(timestamp);
+            
+            
+            //it.setFecha(fecha);
             
             // dispositivo_afectado, marca, modelo, numero_serie, ubicacion
             
@@ -68,7 +98,7 @@ public class IncidenteTecnicoController {
                 exito = modelo.registrarIncidente(it);
             } catch (SQLException ex) {
                 
-                this.vista.mostrarError("Error conectandose al servidor");
+                this.vista.mostrarErrorBaseDeDatos();
             }
             if (exito) {
                 this.vista.mostrarExito("Se envio el incidente correctamente");
@@ -76,7 +106,7 @@ public class IncidenteTecnicoController {
             
             
         } else {
-            this.vista.mostrarError("Complete todos los campos");
+            this.vista.mostrarError();
         }
     }
     

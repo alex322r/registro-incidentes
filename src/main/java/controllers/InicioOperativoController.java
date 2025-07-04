@@ -44,6 +44,8 @@ public class InicioOperativoController {
    public void mostrarReporte(){
         appController.mostrarReporte();
     }
+   
+   
     
     private void verIncidentes() {
       

@@ -5,6 +5,7 @@
 package clases;
 
 import clases.Adjunto;
+import enums.Prioridad;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public abstract class Incidente {
     private String estado;
     private PersonalOperativo reportadoPor; 
     private PersonalSeguridad asignadoA;   
-    private String prioridad;
+    private Prioridad prioridad;
     private Adjunto adjunto;
     private ArrayList<HistorialEscalamiento> historialDeEscalamientos;
 
@@ -103,11 +104,11 @@ public abstract class Incidente {
         this.asignadoA = asignadoA;
     }
 
-    public String getPrioridad() {
+    public Prioridad getPrioridad() {
         return prioridad;
     }
 
-    public void setPrioridad(String prioridad) {
+    public void setPrioridad(Prioridad prioridad) {
         this.prioridad = prioridad;
     }
 

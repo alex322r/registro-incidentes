@@ -19,6 +19,7 @@ public class AppModel {
     
     private Personal personalLogueado;
     private List<Incidente> incidentes;
+    private Incidente incidenteSeleccionado;
     
     
     
@@ -37,6 +38,14 @@ public class AppModel {
     
     public void setIncidentes(List<Incidente> incidentes) {
         this.incidentes = incidentes;
+    }
+    
+    public void setIncidenteSeleccionado(Incidente incidente) {
+        this.incidenteSeleccionado = incidente;
+    }
+    
+    public Incidente getIncidenteSeleccionado() {
+        return incidenteSeleccionado;
     }
 
   
@@ -57,6 +66,22 @@ public class AppModel {
         this.personalLogueado = null;
         return false;
     }
+    
+    
+    
+    public boolean recuperarIncidenteDetalle(int id) throws Exception {
+        
+        Incidente incidente = new IncidenteDAO().recuperarIncidenteById(id);
+        
+        if (incidente != null) {
+           this.setIncidenteSeleccionado(incidente);
+           return true;
+        }
+       
+        return false;
+    }
+    
+    
     
     public boolean recuperarIncidentes() {
         

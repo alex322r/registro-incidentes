@@ -31,7 +31,7 @@ public class GenerarEtiquetas {
                 in.add(i.getReportadoPor().getDniPersonal());
                
                 
-                in.add(i.getPrioridad());
+                in.add(i.getPrioridad().name());
                        
                 
                 etiquetas.add(in);

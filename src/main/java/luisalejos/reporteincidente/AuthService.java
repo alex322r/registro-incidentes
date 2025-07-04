@@ -74,7 +74,7 @@ public class AuthService {
     
     public Personal obtenerDatosPersonalPorDni(String dniPersonal) {
        
-       String sql = "SELECT dni_personal, nombre, apellido, nivel_soporte, rol FROM personal WHERE dni_personal = ?";
+       String sql = "SELECT nombre, apellido, nivel_soporte, rol FROM personal WHERE dni_personal = ?";
        
        Personal personal = null;
        
@@ -102,8 +102,7 @@ public class AuthService {
                    personal = new PersonalOperativo();
                 }
                
-                // Llenamos el objeto con los datos de la base de datos
-                personal.setDniPersonal(rs.getString("dni_personal"));
+                personal.setDniPersonal(dniPersonal);
                 personal.setNombre(rs.getString("nombre"));
                 personal.setApellido(rs.getString("apellido"));
                 

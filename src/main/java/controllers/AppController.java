@@ -6,7 +6,7 @@ package controllers;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-import vistas.ReporteIncidentePanel;
+
 
 
 public class AppController {
@@ -19,6 +19,7 @@ public class AppController {
     private IncidenteInstalacionController incidenteInstalacionController;
     private IncidenteSeguridadController incidenteSeguridadController;
     private IncidenteTecnicoController incidenteTecnicoController;
+    private DetalleIncidenteController detallaeIncidenteController;
     
     public void setInicioOperativoController(InicioOperativoController controller) {
         this.inicioOperativoController = controller;
@@ -43,6 +44,10 @@ public class AppController {
     public void setIncidenteTecnicoController (IncidenteTecnicoController controller){
         this.incidenteTecnicoController = controller;
     
+    }
+    
+    public void setDetalleIncidenteController(DetalleIncidenteController controller) {
+        this.detallaeIncidenteController = controller;
     }
     
     public AppController(JPanel contenedor, CardLayout layout) {
@@ -87,5 +92,12 @@ public class AppController {
         cardLayout.show(contenedorVistas, "listaIncidentes");
     }
     
+    void mostrarDetalleIncidente() {
+        if (detallaeIncidenteController != null ) {
+            // cargar datos
+            detallaeIncidenteController.cargarDatos();
+        } 
+        cardLayout.show(contenedorVistas, "detalleIncidente");
+    }
     
 }

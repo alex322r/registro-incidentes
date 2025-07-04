@@ -4,6 +4,7 @@
  */
 package luisalejos.reporteincidente;
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -15,6 +16,7 @@ import java.awt.event.MouseEvent;
 public class IncidenteTile extends javax.swing.JPanel {
 
     private String idIncidente;
+    private final Color colorOriginal = this.getBackground();
     /**
      * Creates new form IncidenteTile
      * @param id
@@ -27,6 +29,9 @@ public class IncidenteTile extends javax.swing.JPanel {
      */
     public IncidenteTile(String id, String tipo, String fecha, String estado, String asignadoA, String prioridad) {
         initComponents();
+        
+        this.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
         this.idIncidente = id;
         etiquetaId.setText(id);
         etiquetaTipo.setText(tipo);
@@ -44,12 +49,25 @@ public class IncidenteTile extends javax.swing.JPanel {
                 firePropertyChange("incidenteClicked", null, idIncidente);
                 
             }
+            
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // El ratón ha entrado en el área del botón
+                
+                setBackground(Color.CYAN); // Cambia el color de fondo
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // El ratón ha salido del área del botón
+                setBackground(colorOriginal); // Vuelve al color original
+            }
         
         });
     }
     
     public IncidenteTile() {
-        this.setCursor(new Cursor(2));
+        
         initComponents();
     }
 
