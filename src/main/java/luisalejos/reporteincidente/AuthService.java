@@ -4,9 +4,11 @@
  */
 package luisalejos.reporteincidente;
 
+import data.BaseDeDatos;
 import clases.PersonalSeguridad;
 import clases.PersonalOperativo;
 import clases.Personal;
+import enums.NivelEscalamiento;
 import org.mindrot.jbcrypt.BCrypt;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -92,7 +94,7 @@ public class AuthService {
                 if("seguridad".equals(rol)) {
                     PersonalSeguridad personalSeguridad = new PersonalSeguridad();
                     
-                    String nivel = rs.getString("nivel_soporte");
+                    NivelEscalamiento nivel = NivelEscalamiento.valueOf(rs.getString("nivel_soporte"));
                     personalSeguridad.setNivelDeSoporte(nivel);
                     
                     personal = personalSeguridad;

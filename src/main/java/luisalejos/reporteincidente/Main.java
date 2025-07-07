@@ -16,8 +16,8 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import vistas.ReporteIncidentePanel;
-import vistas.IncidenteInstalacion;
-import vistas.IncidenteSeguridad;
+import vistas.VistaIncidenteInstalacion;
+import vistas.VistaIncidenteSeguridad;
 import vistas.VistaDetalleIncidente;
 import vistas.VistaIncidenteTecnico;
 
@@ -30,10 +30,10 @@ public class Main {
        VistaInicioOperativo vistaInicioOperativo = new VistaInicioOperativo();
        VistaListaIncidentes vistaListaIncidentes = new VistaListaIncidentes();
        ReporteIncidentePanel Reporte = new ReporteIncidentePanel();
-       IncidenteInstalacion Instalacion = new IncidenteInstalacion();
-       IncidenteSeguridad Seguridad = new IncidenteSeguridad ();
-       VistaIncidenteTecnico Tecnico = new VistaIncidenteTecnico();
-        VistaDetalleIncidente vistaDetalleIncidente = new VistaDetalleIncidente();
+       VistaIncidenteInstalacion vistaIncidenteInstalacion = new VistaIncidenteInstalacion();
+       VistaIncidenteSeguridad Seguridad = new VistaIncidenteSeguridad ();
+       VistaIncidenteTecnico vistaIncidenteTecnico = new VistaIncidenteTecnico();
+       VistaDetalleIncidente vistaDetalleIncidente = new VistaDetalleIncidente();
        
         CardLayout cardLayout = new CardLayout();
         JPanel contenedorVistas = new JPanel(cardLayout);
@@ -44,9 +44,9 @@ public class Main {
         contenedorVistas.add(vistaDetalleIncidente, "detalleIncidente");
         
         
-        contenedorVistas.add(Instalacion, "instalacion");
+        contenedorVistas.add(vistaIncidenteInstalacion, "instalacion");
         contenedorVistas.add(Seguridad, "seguridad");
-        contenedorVistas.add(Tecnico, "tecnico");
+        contenedorVistas.add(vistaIncidenteTecnico, "tecnico");
        
        
         AppController appController = new AppController(contenedorVistas, cardLayout);
@@ -56,9 +56,9 @@ public class Main {
         appController.setInicioOperativoController(new InicioOperativoController(modelo, vistaInicioOperativo,Reporte, appController));
         appController.setListaIncidentesController(new ListaIncidentesController(modelo, vistaListaIncidentes, appController) );
         appController.setReporteIncidenteController(new ReporteIncidenteController(modelo,Reporte, appController));
-        appController.setIncidenteInstalacionController(new IncidenteInstalacionController(modelo,Instalacion,appController));
+        appController.setIncidenteInstalacionController(new IncidenteInstalacionController(modelo, vistaIncidenteInstalacion,appController));
         appController.setIncidenteSeguridadController(new IncidenteSeguridadController(modelo,Seguridad,appController));
-        appController.setIncidenteTecnicoController(new IncidenteTecnicoController(modelo,Tecnico,appController));
+        appController.setIncidenteTecnicoController(new IncidenteTecnicoController(modelo, vistaIncidenteTecnico,appController));
 
         appController.setDetalleIncidenteController(new DetalleIncidenteController(modelo, vistaDetalleIncidente, appController));
         

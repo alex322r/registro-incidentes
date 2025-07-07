@@ -10,4 +10,8 @@ package enums;
  */
 public enum EstadoIncidente {
     
+    ABIERTO,
+    EN_PROCESO,
+    SOLUCIONADO
+    
 }

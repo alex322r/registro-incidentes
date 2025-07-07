@@ -5,6 +5,7 @@
 package clases;
 
 import clases.Adjunto;
+import enums.EstadoIncidente;
 import enums.Prioridad;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -17,11 +18,18 @@ import java.util.List;
 public abstract class Incidente {
     
     private String id;
-    
     private String titulo;
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
     private String descripcion;
     private Timestamp fecha;
-    private String estado;
+    private EstadoIncidente estado;
     private PersonalOperativo reportadoPor; 
     private PersonalSeguridad asignadoA;   
     private Prioridad prioridad;
@@ -54,15 +62,7 @@ public abstract class Incidente {
         this.historialDeEscalamientos = historialDeEscalamientos;
     }
     
-    
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
+   
 
     public String getDescripcion() {
         return descripcion;
@@ -80,11 +80,11 @@ public abstract class Incidente {
         this.fecha = fecha;
     }
 
-    public String getEstado() {
+    public EstadoIncidente getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(EstadoIncidente estado) {
         this.estado = estado;
     }
 

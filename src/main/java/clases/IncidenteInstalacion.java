@@ -10,10 +10,30 @@ import clases.Incidente;
  *
  * @author alexis
  */
-public class IncidenteInstalaciones extends Incidente {
+public class IncidenteInstalacion extends Incidente {
     
+    
+    private String tipoDeProblema;
     private String edificio;
     private String piso;
+    private String numeroDeOficina;
+    
+
+    public String getNumeroDeOficina() {
+        return numeroDeOficina;
+    }
+
+    public void setNumeroDeOficina(String numeroDeOficina) {
+        this.numeroDeOficina = numeroDeOficina;
+    }
+
+    public String getTipoDeProblema() {
+        return tipoDeProblema;
+    }
+
+    public void setTipoDeProblema(String tipoDeProblema) {
+        this.tipoDeProblema = tipoDeProblema;
+    }
 
     public String getEdificio() {
         return edificio;
@@ -31,12 +51,6 @@ public class IncidenteInstalaciones extends Incidente {
         this.piso = piso;
     }
 
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-    private String numero;
+  
+    
 }

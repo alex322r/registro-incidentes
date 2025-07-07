@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import luisalejos.reporteincidente.IncidenteTile;
+import panels.IncidenteTile;
 
 /**
  *
@@ -66,7 +66,6 @@ public class VistaListaIncidentes extends javax.swing.JPanel {
         jToolBar1 = new javax.swing.JToolBar();
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
         botonVolver1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 34, 64));
@@ -139,11 +138,6 @@ public class VistaListaIncidentes extends javax.swing.JPanel {
         botonVolver.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botonVolver.setForeground(new java.awt.Color(255, 255, 255));
         botonVolver.setText("Volver");
-        botonVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonVolverActionPerformed(evt);
-            }
-        });
 
         jToolBar1.setRollover(true);
 
@@ -164,21 +158,10 @@ public class VistaListaIncidentes extends javax.swing.JPanel {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar prioridad", "baja", "media", "alta" }));
         jToolBar1.add(jComboBox2);
 
-        jComboBox3.setBackground(new java.awt.Color(0, 153, 153));
-        jComboBox3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jComboBox3.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jToolBar1.add(jComboBox3);
-
         botonVolver1.setBackground(new java.awt.Color(0, 0, 204));
         botonVolver1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botonVolver1.setForeground(new java.awt.Color(255, 255, 255));
         botonVolver1.setText("Ir al inicio");
-        botonVolver1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonVolver1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -213,19 +196,11 @@ public class VistaListaIncidentes extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonVolverActionPerformed
-
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
     
        
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void botonVolver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolver1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonVolver1ActionPerformed
 
    
     
@@ -271,7 +246,6 @@ public class VistaListaIncidentes extends javax.swing.JPanel {
     private javax.swing.JButton botonVolver1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

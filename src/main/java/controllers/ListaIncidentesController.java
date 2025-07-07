@@ -6,6 +6,7 @@ package controllers;
 
 import clases.Incidente;
 import clases.Personal;
+import clases.PersonalOperativo;
 import controllers.AppController;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -43,8 +44,10 @@ public class ListaIncidentesController {
 
     public void cargarDatos() {
         
-        List<Incidente> incidentes = modelo.getIncidentes();
-        if (incidentes != null) {
+        PersonalOperativo po = (PersonalOperativo) modelo.getUsuarioLogueado();
+        List<Incidente> incidentes = po.getIncidenteReportados();
+        this.modelo.setIncidentes(incidentes);
+        if (this.modelo.getIncidentes() != null) {
             
             List<List<String>> incidentesEtiquetas = GenerarEtiquetas
                     .generarIncidentes(incidentes);
@@ -52,7 +55,7 @@ public class ListaIncidentesController {
                 try {
                     verDetalleIncidente(e);
                 } catch (Exception ex) {
-                    System.getLogger(ListaIncidentesController.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+                    ex.printStackTrace();
                 }
             } );
         }
@@ -75,7 +78,7 @@ public class ListaIncidentesController {
                 .filter(incidente -> {
                    
                     boolean estadoCoincidencia = estado.equalsIgnoreCase("todos") ||
-                            incidente.getEstado().equalsIgnoreCase(estado);
+                            incidente.getEstado().name().equalsIgnoreCase(estado);
                     
                     boolean  prioridadCoincidencia = prioridad.equalsIgnoreCase("todos") ||
                             incidente.getPrioridad().name().equalsIgnoreCase(prioridad);
@@ -89,15 +92,12 @@ public class ListaIncidentesController {
                 try {
                     verDetalleIncidente(e);
                 } catch (Exception ex) {
-                    System.getLogger(ListaIncidentesController.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+                    ex.printStackTrace();
                 }
             });
-            System.out.println("Filtrados: " + incidentesFiltrados.size());
+            
 
-        }
-        
-        
-        
+        } 
     }
     
     

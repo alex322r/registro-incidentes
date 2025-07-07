@@ -74,18 +74,8 @@ public class VistaInicioOperativo extends javax.swing.JPanel {
         BotonReportarIncidente.setMargin(new java.awt.Insets(1, 14, 3, 14));
         BotonReportarIncidente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         BotonReportarIncidente.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        BotonReportarIncidente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonReportarIncidenteActionPerformed(evt);
-            }
-        });
 
         jButton3.setText("jButton3");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
         botonLogout.setBackground(new java.awt.Color(0, 0, 204));
         botonLogout.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -161,20 +151,6 @@ public class VistaInicioOperativo extends javax.swing.JPanel {
             .addComponent(VistaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void BotonReportarIncidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReportarIncidenteActionPerformed
-       /* ReporteIncidentePanel p3 = new ReporteIncidentePanel();
-                p3.setSize(830, 530);
-        p3.setLocation(0,0);
-        VistaInicio.removeAll();
-        VistaInicio.add(p3);
-        VistaInicio.revalidate();
-        VistaInicio.repaint(); */
-    }//GEN-LAST:event_BotonReportarIncidenteActionPerformed
 
     private void botonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLogoutActionPerformed
         // TODO add your handling code here:

@@ -5,6 +5,11 @@
 package utils;
 
 import clases.Incidente;
+import clases.IncidenteInstalacion;
+import clases.IncidenteSeguridad;
+import clases.IncidenteTecnico;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,21 +22,33 @@ public class GenerarEtiquetas {
     public static List<List<String>> generarIncidentes(List<Incidente> incidentes) {
         
         List<List<String>> etiquetas = new ArrayList<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         
-            for(Incidente i : incidentes) {
+            for(Incidente incidente : incidentes) {
                 List <String> in = new ArrayList<>();
                 
-                in.add(i.getId());
+                in.add(incidente.getId());
+                if (incidente instanceof IncidenteTecnico) {
+                    in.add("tecnico");
+                } else if (incidente instanceof IncidenteInstalacion) {
+                    in.add("instalaciones");
+                } else if (incidente instanceof IncidenteSeguridad) {
+                    in.add("seguridad");
+                } else {
+                    
+                }
                 
-                in.add("tecnico");
-                in.add(i.getFecha().toString());
+                LocalDateTime dateTime = incidente.getFecha().toLocalDateTime();    
+                String fechaFormateada = dateTime.format(formatter);
+                
+                in.add(fechaFormateada);
                 
                 
-                in.add(i.getEstado());
-                in.add(i.getReportadoPor().getDniPersonal());
+                in.add(incidente.getEstado().name());
+                in.add(incidente.getAsignadoA().getDniPersonal());
                
                 
-                in.add(i.getPrioridad().name());
+                in.add(incidente.getPrioridad().name());
                        
                 
                 etiquetas.add(in);

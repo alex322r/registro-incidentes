@@ -5,6 +5,7 @@
 package clases;
 
 import clases.Personal;
+import enums.NivelEscalamiento;
 
 /**
  *
@@ -12,13 +13,13 @@ import clases.Personal;
  */
 public class PersonalSeguridad extends Personal {
     
-    private String nivelDeSoporte;
+    private NivelEscalamiento nivelDeSoporte;
 
-    public String getNivelDeSoporte() {
+    public NivelEscalamiento getNivelDeSoporte() {
         return nivelDeSoporte;
     }
 
-    public void setNivelDeSoporte(String nivelDeSoporte) {
+    public void setNivelDeSoporte(NivelEscalamiento nivelDeSoporte) {
         this.nivelDeSoporte = nivelDeSoporte;
     }
     

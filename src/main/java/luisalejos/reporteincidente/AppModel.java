@@ -82,7 +82,7 @@ public class AppModel {
     }
     
     
-    
+    /*
     public boolean recuperarIncidentes() {
         
         List<Incidente> inc = new IncidenteDAO().recuperarIncidentes();
@@ -96,6 +96,9 @@ public class AppModel {
         return false;
     }
     
+    */
+    
+    /*
     public boolean recuperarIncidentesByDni(String dni) {
         
         List<Incidente> inc = new IncidenteDAO().recuperarIncidentesPorReportante(dni);
@@ -108,15 +111,10 @@ public class AppModel {
         this.incidentes = null;
         return false;
     }
+    */
     
     
-    public boolean registrarIncidente(Incidente incidente) throws SQLException {
-        
-        return new IncidenteDAO().crearIncidente(incidente);
-        
-        
-    }
-    
+  
     
 
     public void cerrarSesion() {

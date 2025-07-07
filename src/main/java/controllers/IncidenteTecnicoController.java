@@ -10,12 +10,14 @@ import vistas.VistaInicioOperativo;
 import clases.IncidenteTecnico;
 import clases.Personal;
 import clases.PersonalOperativo;
+import enums.EstadoIncidente;
 import enums.Prioridad;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import luisalejos.reporteincidente.IncidenteDAO;
 
 public class IncidenteTecnicoController {
     private AppModel modelo;
@@ -43,65 +45,59 @@ public class IncidenteTecnicoController {
             
             ad.setNombre("adjunto.jpg");
             ad.setRuta("/imagenes/");
-            
-            // tipo, titulo, descripcion, estado,", " reportado_por_dni, prioridad, adjunto_id
-            
+             
             HashMap datos = this.vista.getCamposIncidenteTecnico();
             
             it.setAdjunto(ad);
             it.setReportadoPor((PersonalOperativo) p);
             it.setTitulo(datos.get("titulo").toString());
             it.setDescripcion(datos.get("descripcion").toString());
-            it.setEstado("abierto");
-            it.setPrioridad(Prioridad.BAJA);
+         
             it.setDispositivoAfectado(datos.get("dispositivo").toString());
             
             Date fecha = (Date) datos.get("fecha");
             
-            
-          
             Date hora = (Date) datos.get("hora");
-
-            // Usar Calendar para combinar fecha + hora
+           
             Calendar calFecha = Calendar.getInstance();
             calFecha.setTime(fecha);
 
             Calendar calHora = Calendar.getInstance();
             calHora.setTime(hora);
-
-            // Establecer hora en la fecha
+            
             calFecha.set(Calendar.HOUR_OF_DAY, calHora.get(Calendar.HOUR_OF_DAY));
             calFecha.set(Calendar.MINUTE, calHora.get(Calendar.MINUTE));
             calFecha.set(Calendar.SECOND, 0);
             calFecha.set(Calendar.MILLISECOND, 0);
 
-            // Convertir a Timestamp
+            
             Timestamp timestamp = new Timestamp(calFecha.getTimeInMillis());
             
             
             it.setFecha(timestamp);
             
             
-            //it.setFecha(fecha);
-            
-            // dispositivo_afectado, marca, modelo, numero_serie, ubicacion
-            
-            
-            it.setMarca("s");
-            it.setNumeroSerie("2112044");
-            it.setUbicacion("aula302");
+            it.setMarca(datos.get("marca").toString());
+            it.setNumeroSerie(datos.get("serie").toString());
+            it.setUbicacion(datos.get("ubicacion").toString());
+            it.setModelo(datos.get("modelo").toString());
             
             
             
             boolean exito = false;
             try {
-                exito = modelo.registrarIncidente(it);
+                
+                PersonalOperativo po = (PersonalOperativo) modelo.getUsuarioLogueado();
+                
+                exito = po.reportarIncidente(it);
+                
             } catch (SQLException ex) {
                 
                 this.vista.mostrarErrorBaseDeDatos();
             }
             if (exito) {
                 this.vista.mostrarExito("Se envio el incidente correctamente");
+                this.vista.resetCampos();
             }
             
             

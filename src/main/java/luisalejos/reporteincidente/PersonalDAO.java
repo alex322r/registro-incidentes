@@ -4,6 +4,7 @@
  */
 package luisalejos.reporteincidente;
 
+import data.BaseDeDatos;
 import clases.Personal;
 import clases.PersonalOperativo;
 import clases.PersonalSeguridad;

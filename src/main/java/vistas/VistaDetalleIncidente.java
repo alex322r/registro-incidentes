@@ -5,7 +5,10 @@
 package vistas;
 
 import clases.IncidenteTecnico;
-import luisalejos.reporteincidente.IncidenteTecnicoContainer;
+import java.awt.event.ActionListener;
+import panels.IncidenteInstalacionesContainer;
+import panels.IncidenteSeguridadContainer;
+import panels.IncidenteTecnicoContainer;
 
 /**
  *
@@ -47,6 +50,7 @@ public class VistaDetalleIncidente extends javax.swing.JPanel {
         etiquetaAsignadoA = new javax.swing.JLabel();
         etiquetaCorreo = new javax.swing.JLabel();
         contedorTipoIncidente = new javax.swing.JPanel();
+        botonVolver = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 
@@ -163,24 +167,35 @@ public class VistaDetalleIncidente extends javax.swing.JPanel {
         contedorTipoIncidente.setBackground(new java.awt.Color(153, 255, 204));
         contedorTipoIncidente.setLayout(new java.awt.BorderLayout());
 
+        botonVolver.setText("Volver");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contedorTipoIncidente, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(contedorTipoIncidente, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botonVolver)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addContainerGap()
+                .addComponent(botonVolver)
+                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(contedorTipoIncidente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(contedorTipoIncidente, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -219,17 +234,53 @@ public class VistaDetalleIncidente extends javax.swing.JPanel {
         this.etiquetaCorreo.setText(correo);
     }
     
-    public void setContenedorTipoTecnico() {
+    public void setContenedorTipoSeguridad(String causa, String nivel, String tipo,
+    String lugar) {
         
-        IncidenteTecnicoContainer itc = new IncidenteTecnicoContainer();
+        IncidenteSeguridadContainer isc = new IncidenteSeguridadContainer(
+                causa, nivel, tipo, lugar
+        );
+        
+        this.contedorTipoIncidente.add(isc);
+        
+    } 
+    
+    public void setContenedorTipoTecnico(String dispositivo, String marca, String modelo, 
+        String numeroSerie, String ubicacion) {
+        
+        
+        
+        IncidenteTecnicoContainer itc = new IncidenteTecnicoContainer(dispositivo, 
+        marca, modelo, numeroSerie, ubicacion);
+      
         this.contedorTipoIncidente.add(itc);
             
     }
     
+    public void setContenedorTipoInstalaciones(String edificio, String numero, String piso,
+            String tipoProblema) {
+        
+        IncidenteInstalacionesContainer iic = new IncidenteInstalacionesContainer(edificio,
+                numero, piso, tipoProblema
+        );
+        
+        this.contedorTipoIncidente.add(iic);
+    }
+    
+    public void limpiarTipoDeIncidente() {
+        this.contedorTipoIncidente.removeAll();
+    }
+    
+    
+    
+    public void addVolverListener(ActionListener listener) {
+        this.botonVolver.addActionListener(listener);
+    }
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonVolver;
     private javax.swing.JPanel contedorTipoIncidente;
     private javax.swing.JLabel etiquetaAsignadoA;
     private javax.swing.JLabel etiquetaCorreo;

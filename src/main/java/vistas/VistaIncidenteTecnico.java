@@ -11,7 +11,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
-import utils.ValidadorFecha;
+import utils.ValidadorCamposIncidente;
 
 /**
  *
@@ -19,6 +19,8 @@ import utils.ValidadorFecha;
  */
 public class VistaIncidenteTecnico extends javax.swing.JPanel {
 
+    SpinnerDateModel horaModel;
+    SpinnerDateModel fechaModel;
     private List errores;
     
     /**
@@ -27,14 +29,13 @@ public class VistaIncidenteTecnico extends javax.swing.JPanel {
     public VistaIncidenteTecnico() {
         initComponents();
        errores = new ArrayList<>();
-       SpinnerDateModel model = new SpinnerDateModel();
-       spinnerHora.setModel(model);
+       horaModel = new SpinnerDateModel();
+       spinnerHora.setModel(horaModel);
 
-        SpinnerDateModel fechaModel = new SpinnerDateModel();
+        fechaModel = new SpinnerDateModel();
        
         spinnerFecha.setModel(fechaModel);
         
-// Mostrar solo horas y minutos
         JSpinner.DateEditor editor = new JSpinner.DateEditor(spinnerHora, "HH:mm a");
         spinnerHora.setEditor(editor);
         
@@ -341,6 +342,21 @@ public class VistaIncidenteTecnico extends javax.swing.JPanel {
         Tecnico.repaint(); */  
     }//GEN-LAST:event_btnRegresarActionPerformed
 
+    public void resetCampos() {
+        
+        this.SelectorIncidente.setSelectedIndex(0);
+        this.txtDispositivoAfectado.setText("");
+        this.txtMarca.setText("");
+        this.txtModelo.setText("");
+       
+        this.txtNumeroDeSerie.setText("");
+        this.txtUbicacion.setText("");
+       
+        this.txtDescripcion.setText("");
+    }
+    
+    
+    
     public List<String> verificarCampos() {
     
         List<String> errores = new ArrayList<>();
@@ -348,20 +364,64 @@ public class VistaIncidenteTecnico extends javax.swing.JPanel {
     if (txtDescripcion.getText().isBlank()) {
         errores.add("La descripción no puede estar vacía.");
     }
+    
+    if(txtDescripcion.getText().length() > 250) {
+        errores.add("La descripcion no puede exceder los 250 caracteres");
+    }
+    
+    
+    
     if (txtDispositivoAfectado.getText().isBlank()) {
         errores.add("El dispositivo afectado no puede estar vacío.");
+    }
+    
+    if (txtDispositivoAfectado.getText().length() > 25) {
+        errores.add("El dispositivo afectado no puede exceder los 25 caracteres");
     }
     
    
     if (txtMarca.getText().isBlank()) {
         errores.add("La marca no puede estar vacía.");
+    } else {
+        
+        if (txtMarca.getText().length() > 25) {
+            errores.add("La marca no debe acceder los 25 caracteres");
+        }
+    
+        if (!ValidadorCamposIncidente.validarMarca(txtMarca.getText())) {
+            errores.add("Marca deben ser solo letras");
+        }
+        
     }
+
+    if (txtUbicacion.getText().isBlank()) {
+        errores.add("La ubicacion no puede estar vacia");
+    } else {
+        if (!ValidadorCamposIncidente.validarUbicacion(txtUbicacion.getText())) {
+            errores.add("La ubicacion debe tener el formato: \"AULA-302B\" ");
+        }
+        if (txtUbicacion.getText().length() > 25 ) {
+            errores.add("La ubicacion no puede exceder los 25 caracteres");
+        }
+    }
+  
     if (txtModelo.getText().isBlank()) {
         errores.add("El modelo no puede estar vacío.");
     }
+    
+    if (txtModelo.getText().length() > 25 ) {
+        errores.add("El modelo no puede exceder los 25 caracteres");
+    }
+    
+    
     if (txtNumeroDeSerie.getText().isBlank()) {
         errores.add("El número de serie no puede estar vacío.");
     }
+    
+      if (txtNumeroDeSerie.getText().length() > 25 ) {
+        errores.add("El numero de serie no puede exceder los 25 caracteres");
+    }
+    
 
     this.errores = errores;
     
@@ -382,7 +442,7 @@ public class VistaIncidenteTecnico extends javax.swing.JPanel {
         campos.put("serie", this.txtNumeroDeSerie.getText());
         campos.put("fecha", this.spinnerFecha.getValue());
         campos.put("hora", this.spinnerHora.getValue());
-        
+        campos.put("ubicacion", txtUbicacion.getText());
         
         return campos;
     }

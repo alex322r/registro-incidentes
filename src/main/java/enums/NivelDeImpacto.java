@@ -8,7 +8,7 @@ package enums;
  *
  * @author alexis
  */
-public enum NivelRiesgo {
+public enum NivelDeImpacto {
     BAJO,
     MEDIO,
     ALTO

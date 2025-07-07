@@ -1,4 +1,4 @@
-package luisalejos.reporteincidente;
+package data;
 
 import java.sql.*;
 import java.util.Properties;
@@ -17,7 +17,7 @@ public class BaseDeDatos {
         
         public static Connection getConexion() throws SQLException {
             
-            url = "jdbc:postgresql://172.203.146.248/registro_incidentes_db";
+            url = "jdbc:postgresql://localhost/registro_incidentes_db";
             props = new Properties();
             props.setProperty("user", "alexis");
             props.setProperty("password", "123456");

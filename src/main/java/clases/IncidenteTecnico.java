@@ -58,6 +58,13 @@ public class IncidenteTecnico extends Incidente {
         this.ubicacion = ubicacion;
     }
     
+    public void verificarGarantia() {
+        
+    }
+     
+    public void solicitarPiezaDeReemplazo() {
+        
+    }
     
     
     

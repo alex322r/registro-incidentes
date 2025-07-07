@@ -2,9 +2,6 @@
 package controllers;
 
 import luisalejos.reporteincidente.AppModel;
-import vistas.IncidenteInstalacion;
-import vistas.IncidenteSeguridad;
-import vistas.VistaIncidenteTecnico;
 import vistas.ReporteIncidentePanel;
 
 public class ReporteIncidenteController {

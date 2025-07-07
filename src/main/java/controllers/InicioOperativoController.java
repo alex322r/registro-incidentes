@@ -4,9 +4,12 @@
  */
 package controllers;
 
+import clases.Incidente;
 import controllers.AppController;
 import luisalejos.reporteincidente.AppModel;
 import clases.Personal;
+import clases.PersonalOperativo;
+import java.util.List;
 import vistas.ReporteIncidentePanel;
 import vistas.VistaInicioOperativo;
 import vistas.VistaLogin;
@@ -49,9 +52,15 @@ public class InicioOperativoController {
     
     private void verIncidentes() {
       
+        PersonalOperativo po = (PersonalOperativo) modelo.getUsuarioLogueado();
         
+        List<Incidente> incidentes = po.getIncidenteReportados();
         
-        if (modelo.recuperarIncidentesByDni(modelo.getUsuarioLogueado().getDniPersonal())) {
+        for (Incidente in : incidentes) {
+            System.out.println(in.getClass());
+        }
+        
+        if (incidentes != null) {
             
             appController.mostrarListaIncidentes();
             

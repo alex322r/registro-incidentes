@@ -10,7 +10,7 @@ package clases;
  */
 public abstract class Personal {
     
-    private String dniPersonal;
+    protected String dniPersonal;
     private String nombre;
     private String apellido;
     private String correo;
@@ -59,6 +59,5 @@ public abstract class Personal {
     }
     
     
-    
-    
+   
 }

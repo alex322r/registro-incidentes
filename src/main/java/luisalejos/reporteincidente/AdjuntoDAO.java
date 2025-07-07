@@ -4,6 +4,7 @@
  */
 package luisalejos.reporteincidente;
 
+import data.BaseDeDatos;
 import clases.Adjunto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package luisalejos.reporteincidente;
+package panels;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -32,12 +32,19 @@ public class IncidenteTile extends javax.swing.JPanel {
         
         this.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
+        
         this.idIncidente = id;
+        
         etiquetaId.setText(id);
         etiquetaTipo.setText(tipo);
         etiquetaFecha.setText(fecha);
         etiquetaEstado.setText(estado);
-        etiquetaAsignadoA.setText(asignadoA);
+        etiquetaAsignadoA.setText("SIN ASIGNAR");
+        
+        if (asignadoA != null) {
+            etiquetaAsignadoA.setText(asignadoA);
+        }
+        
         etiquetaPrioridad.setText(prioridad);
         
         
