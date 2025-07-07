@@ -49,14 +49,14 @@ public class IncidenteTecnicoController {
                 
                 try {
                
-                String rutaGuardada = ImagenUtilidad.guardarImagen(imagen);
+                    String rutaGuardada = ImagenUtilidad.guardarImagen(imagen);
 
               
-                ad.setRuta(rutaGuardada);
+                    ad.setRuta(rutaGuardada);
 
-            } catch (IOException ex) {
-                this.vista.mostrarError();
-            }
+                } catch (IOException ex) {
+                    this.vista.mostrarError();
+                }
                 
             } 
              
