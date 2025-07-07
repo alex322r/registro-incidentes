@@ -2,27 +2,25 @@
 package controllers;
 
 import clases.Adjunto;
-import clases.Incidente;
 import luisalejos.reporteincidente.AppModel;
 import vistas.VistaIncidenteTecnico;
-import vistas.ReporteIncidentePanel;
-import vistas.VistaInicioOperativo;
 import clases.IncidenteTecnico;
 import clases.Personal;
 import clases.PersonalOperativo;
-import enums.EstadoIncidente;
-import enums.Prioridad;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import luisalejos.reporteincidente.IncidenteDAO;
+import utils.ImagenUtilidad;
 
 public class IncidenteTecnicoController {
     private AppModel modelo;
     private VistaIncidenteTecnico vista;
     private AppController appController;
+    private File imagen;
 
     public IncidenteTecnicoController(AppModel modelo, VistaIncidenteTecnico vista,  AppController appController) {
         this.modelo = modelo;
@@ -32,6 +30,8 @@ public class IncidenteTecnicoController {
         this.vista.addbtnRegresar(e -> mostrarReporte());
         this.vista.addbtnInicio(e -> mostrarInicioOperativo());
         this.vista.addBotonEnviarListener(e -> enviarIncidente());
+        
+        this.vista.addSeleccionarImagenListener(e-> selecionarImagen());
     } 
     
     public void enviarIncidente() {
@@ -43,8 +43,22 @@ public class IncidenteTecnicoController {
             
             Adjunto ad = new Adjunto();
             
-            ad.setNombre("adjunto.jpg");
-            ad.setRuta("/imagenes/");
+            ad.setNombre("adjunto");
+            
+            if (this.imagen != null) {
+                
+                try {
+               
+                String rutaGuardada = ImagenUtilidad.guardarImagen(imagen);
+
+              
+                ad.setRuta(rutaGuardada);
+
+            } catch (IOException ex) {
+                this.vista.mostrarError();
+            }
+                
+            } 
              
             HashMap datos = this.vista.getCamposIncidenteTecnico();
             
@@ -104,6 +118,11 @@ public class IncidenteTecnicoController {
         } else {
             this.vista.mostrarError();
         }
+    }
+    
+    public void selecionarImagen() {
+        
+        this.imagen = ImagenUtilidad.seleccionarImagen();
     }
     
     
